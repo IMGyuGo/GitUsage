@@ -14,4 +14,11 @@ git:https://github.com
 한번에 2개를 관리할 수 있는 방법(하지만 기존의 https 연결 방식과 차이가 생김)
 ```
 [GitHub(SSH연결)](./GitHub(SSH%20연결).md)
+
+# git 트랙킹 gitignore 설정
 [GitHub(Staged 제거)](./GitStaged제거.md)
+
+# git push origin 2개 설정
+[GitHub(push origin 2개 설정)](./GitPush2개설정.md)
+
+# git 브런치 rule 설정
