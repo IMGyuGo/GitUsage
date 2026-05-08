@@ -22,3 +22,4 @@ git:https://github.com
 [GitHub(push origin 2개 설정)](./GitPush2개설정.md)
 
 # git 브런치 rule 설정
+[GitHub(branch rules 설정)](./gitbranchRules.md)

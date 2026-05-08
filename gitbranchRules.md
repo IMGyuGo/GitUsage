@@ -120,3 +120,94 @@ PR Merge를 어떤 규칙으로 강제할 것인가?
         - 장점 : 깔끔한 linear history
         - 단점 : 이해 어려움, commit hash 변경
 ```
+- merge 전략
+```
+A---B          main
+     \
+      C---D---E   feature/login
+
+A---B----------------M   main
+     \              /
+      C---D---E----/
+```
+- squash 전략
+```
+A---B---S   main
+
+S = C + D + E 합쳐진 새 commit
+```
+- rebase 전략
+```
+merge commit 없이
+브랜치를 직선으로 이어붙임
+
+A---B---C'---D'---E'   main
+```
+
+- 예제 (sqaush)
+```
+A---B
+     \
+      C---D---E        b1
+       \
+        C'--D'--E'--F'  b2
+
+b1 먼저 squash
+main:
+A---B---S1
+
+b2는
+A---B 기반
+git fetch origin
+\git rebase origin/main
+\git merge origin/main
+
+충돌 해결 후
+git add .
+git rebase --continue
+git merge --continue
+
+A---B---S1---S2
+```
+
+
+
+![alt text](img/check.png)
+```
+Active : 활성화
+Disabled : 비활성화
+```
+
+![alt text](./img/brprotect.png)
+```
+누가 브랜치 보호 규칙을 무시(Bypass)할 수 있는가?
+를 선택하는 목록
+
+즉 여기 체크된 대상은
+PR 없이 merge
+force push
+status check 무시
+리뷰 없이 merge
+
+1. Deploy keys
+- 서버/배포용 ssh 키
+- 배포 서버가 자동 push/deploy 할 때 사용
+
+2. Repository admin
+- Repository 권한 가진 사람
+- repo admin이면 브랜치 보호 규칙 무시 가능
+
+3. Maintain
+- Maintain 권한 사용자 (github 권한 레벨 중 하나)
+
+4. Write
+- 일반 collaborator(write 권한)
+
+5. Copilot code review
+- Github Copilot AI 리뷰 앱
+- AI riview bot이 리뷰, 상태체크, 자동 작업
+
+6. Copilot cloud agent
+- Copilot cloud automation agent
+- AI 자동화 관련
+```
